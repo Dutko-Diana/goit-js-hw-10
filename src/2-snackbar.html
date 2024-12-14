@@ -12,17 +12,29 @@
       <form class="form">
         <label>
           Delay (ms)
-          <input type="number" name="delay" required />
+          <input type="number" name="delay" class="snackbar-input" required />
         </label>
 
         <fieldset>
           <legend>State</legend>
           <label>
-            <input type="radio" name="state" value="fulfilled" required />
+            <input
+              class="radio"
+              type="radio"
+              name="state"
+              value="fulfilled"
+              required
+            />
             Fulfilled
           </label>
           <label>
-            <input type="radio" name="state" value="rejected" required />
+            <input
+              class="radio"
+              type="radio"
+              name="state"
+              value="rejected"
+              required
+            />
             Rejected
           </label>
         </fieldset>
@@ -31,6 +43,6 @@
       </form>
     </main>
 
-    <script src="./js/2-snackbar.js"></script>
+    <script type="module" src="./js/2-snackbar.js"></script>
   </body>
 </html>
