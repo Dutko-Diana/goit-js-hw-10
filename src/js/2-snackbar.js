@@ -12,37 +12,31 @@ function createPromise(event) {
   const delay = input.value;
   const state = event.currentTarget.elements.state.value;
 
-  event.currentTarget.reset();
-
-  return new Promise((resolve, reject) => {
+  const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (state === 'rejected') {
-        reject(
-          iziToast.error({
-            icon: 'none',
-            close: false,
-            message: `❌ Rejected promise in ${delay}ms`,
-          })
-        );
+        reject(`❌ Rejected promise in ${delay}ms`);
+        form.reset();
       } else {
-        resolve(
-          iziToast.success({
-            icon: 'none',
-            close: false,
-            message: `✅ Fulfilled promise in ${delay}ms`,
-          })
-        );
+        resolve(`✅ Fulfilled promise in ${delay}ms`);
+        form.reset();
       }
     }, delay);
   });
-}
 
-// createPromise()
-//   .then(data =>
-//     iziToast.success({
-//       message: data,
-//     })
-//   )
-//   .catch(error =>
-//
-//   );
+  return promise
+    .then(data =>
+      iziToast.success({
+        icon: 'none',
+        close: false,
+        message: data,
+      })
+    )
+    .catch(error =>
+      iziToast.error({
+        icon: 'none',
+        close: false,
+        message: error,
+      })
+    );
+}
